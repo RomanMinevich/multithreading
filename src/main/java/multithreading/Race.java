@@ -6,6 +6,6 @@ public class Race {
         Counter counter = new Counter();
         new ThreadExt(counter).start();
         new Thread(new RunnableImpl(counter)).start();
-        System.out.println(counter);
+        System.out.println(counter.getNumber());
     }
 }

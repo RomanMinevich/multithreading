@@ -9,8 +9,7 @@ public class Counter {
         }
     }
 
-    @Override
-    public String toString() {
-        return String.valueOf(number);
+    public int getNumber() {
+        return number;
     }
 }
