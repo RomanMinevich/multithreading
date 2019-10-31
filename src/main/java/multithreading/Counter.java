@@ -1,11 +1,16 @@
 package multithreading;
 
 public class Counter {
-    static int number = 0;
+    private int number;
 
-    static void increment() {
+    void increment() {
         while (number < 100) {
             number ++;
         }
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(number);
     }
 }

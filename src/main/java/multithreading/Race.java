@@ -3,8 +3,9 @@ package multithreading;
 public class Race {
 
     public static void main(String[] args) {
-        new ThreadExt().start();
-        new RunnableImpl().run();
-        System.out.println(Counter.number);
+        Counter counter = new Counter();
+        new ThreadExt(counter).start();
+        new Thread(new RunnableImpl(counter)).start();
+        System.out.println(counter);
     }
 }
