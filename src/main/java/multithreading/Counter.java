@@ -5,7 +5,7 @@ public class Counter {
 
     void increment() {
         while (number < 100) {
-            number ++;
+            number++;
         }
     }
 
