@@ -1,14 +1,17 @@
 package multithreading;
 
 public class ThreadExt extends Thread {
-    private Counter counter;
+    private int number;
 
     public ThreadExt(Counter counter) {
-        this.counter = counter;
+        number = counter.getNumber();
     }
 
     @Override
     public void run() {
-        counter.increment();
+        while (number < 100) {
+            number++;
+            System.out.println(Thread.currentThread().getName() + " : " + number);
+        }
     }
 }
