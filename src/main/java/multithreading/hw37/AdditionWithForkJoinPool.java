@@ -32,7 +32,6 @@ public class AdditionWithForkJoinPool {
                 .sum();
 
         System.out.printf("Total sum of %d random numbers = %d Executed by %s\n",
-                solution.numbers.size(), totalSum,
-                AdditionWithForkJoinPool.class.getName());
+                solution.numbers.size(), totalSum, solution.getClass().getName());
     }
 }

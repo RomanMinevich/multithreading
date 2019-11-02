@@ -38,7 +38,6 @@ public class AdditionWithExecutorService {
         threads.shutdown();
 
         System.out.printf("Total sum of %d random numbers = %d. Executed by %s\n",
-                solution.numbers.size(), solution.totalSum,
-                AdditionWithExecutorService.class.getName());
+                solution.numbers.size(), solution.totalSum, solution.getClass().getName());
     }
 }
