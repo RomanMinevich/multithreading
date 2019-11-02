@@ -15,28 +15,27 @@ public class AdditionWithExecutorService {
         this.threadsNumber = threadsNumber;
     }
 
+    public void report() {
+        SumExecution.report(numbers.size(), execute(), getClass().getName());
+    }
+
+    private long execute() {
+        ExecutorService threads = Executors.newFixedThreadPool(threadsNumber);
+        for (int threadIndex = 0; threadIndex < threadsNumber; threadIndex++) {
+            try {
+                totalSum += threads.submit(
+                        new CustomCallable(getThreadNumbers(threadIndex))).get();
+            } catch (InterruptedException | ExecutionException exception) {
+                System.out.println(getClass().getName() + " : couldn't execute sum");
+            }
+        }
+        threads.shutdown();
+        return totalSum;
+    }
+
     private List<Long> getThreadNumbers(int threadIndex) {
         int threshold = numbers.size() / threadsNumber;
         int lowIndex = threadIndex * threshold;
         return numbers.subList(lowIndex, lowIndex + threshold);
-    }
-
-    public static void main(String[] args) {
-        AdditionWithExecutorService solution = new AdditionWithExecutorService(
-                new RandomNumbers(1_000_000).getNumbers(), 10);
-
-        ExecutorService threads = Executors.newFixedThreadPool(solution.threadsNumber);
-        for (int threadIndex = 0; threadIndex < solution.threadsNumber; threadIndex++) {
-            try {
-                solution.totalSum += threads.submit(
-                                new CustomCallable(solution.getThreadNumbers(threadIndex))).get();
-            } catch (InterruptedException | ExecutionException exception) {
-                System.out.println("Couldn't execute a sum");
-            }
-        }
-        threads.shutdown();
-
-        System.out.printf("Total sum of %d random numbers = %d. Executed by %s\n",
-                solution.numbers.size(), solution.totalSum, solution.getClass().getName());
     }
 }

@@ -8,8 +8,8 @@ import java.util.Random;
 public class RandomNumbers {
     private List<Long> numbers;
 
-    public RandomNumbers(int operandsNumber) {
-        numbers = new Random().longs(operandsNumber)
+    public RandomNumbers(int size) {
+        numbers = new Random().longs(size)
                 .boxed()
                 .collect(toList());
     }

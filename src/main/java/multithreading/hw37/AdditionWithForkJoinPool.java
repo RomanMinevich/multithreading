@@ -13,25 +13,23 @@ public class AdditionWithForkJoinPool {
         this.threshold = threshold;
     }
 
+    public void report() {
+        SumExecution.report(numbers.size(), execute(), getClass().getName());
+    }
+
+    private long execute() {
+        return getTasks(numbers)
+                .stream()
+                .map(ForkJoinTask::invoke)
+                .mapToLong(Long::valueOf)
+                .sum();
+    }
+
     private List<CustomRecursiveTask> getTasks(List<Long> numbers) {
         List<CustomRecursiveTask> tasks = new ArrayList<>();
         for (int index = 0; index < numbers.size() - 1; index += threshold) {
             tasks.add(new CustomRecursiveTask(numbers.subList(index, index + threshold)));
         }
         return tasks;
-    }
-
-    public static void main(String[] args) {
-        AdditionWithForkJoinPool solution = new AdditionWithForkJoinPool(
-                        new RandomNumbers(1_000_000).getNumbers(), 10_000);
-
-        long totalSum = solution.getTasks(solution.numbers)
-                .stream()
-                .map(ForkJoinTask::invoke)
-                .mapToLong(Long::valueOf)
-                .sum();
-
-        System.out.printf("Total sum of %d random numbers = %d Executed by %s\n",
-                solution.numbers.size(), totalSum, solution.getClass().getName());
     }
 }

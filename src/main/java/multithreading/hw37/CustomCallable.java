@@ -12,7 +12,7 @@ public class CustomCallable implements Callable<Long> {
 
     @Override
     public Long call() {
-        long sum = Addition.execute(numbers);
+        long sum = SumExecution.execute(numbers);
         System.out.printf("Sum of %d random numbers = %d. Executed by %s\n",
                 numbers.size(), sum, Thread.currentThread().getName());
         return sum;
