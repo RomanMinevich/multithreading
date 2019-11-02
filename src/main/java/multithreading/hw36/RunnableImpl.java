@@ -1,4 +1,4 @@
-package multithreading;
+package multithreading.hw36;
 
 public class RunnableImpl implements Runnable {
     private int number;

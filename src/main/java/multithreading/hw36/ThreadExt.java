@@ -1,4 +1,4 @@
-package multithreading;
+package multithreading.hw36;
 
 public class ThreadExt extends Thread {
     private int number;
