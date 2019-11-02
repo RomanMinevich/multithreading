@@ -6,7 +6,7 @@ import java.util.concurrent.ForkJoinTask;
 
 public class AdditionWithForkJoinPool {
     private List<Long> numbers;
-    private int threshold = 10_000;
+    private int threshold;
 
     public AdditionWithForkJoinPool(List<Long> numbers, int threshold) {
         this.numbers = numbers;
