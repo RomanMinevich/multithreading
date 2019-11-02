@@ -25,8 +25,7 @@ public class AdditionWithExecutorService {
         AdditionWithExecutorService solution = new AdditionWithExecutorService(
                 new RandomNumbers(1_000_000).getNumbers(), 10);
 
-        ExecutorService threads
-                = Executors.newFixedThreadPool(solution.threadsNumber);
+        ExecutorService threads = Executors.newFixedThreadPool(solution.threadsNumber);
         for (int threadIndex = 0; threadIndex < solution.threadsNumber; threadIndex++) {
             try {
                 solution.totalSum += threads.submit(
