@@ -13,7 +13,7 @@ public class CustomRecursiveTask extends RecursiveTask<Long> {
     @Override
     protected Long compute() {
         long sum = SumExecution.execute(numbers);
-        System.out.printf("Sum of %d random numbers = %d\n", numbers.size(), sum);
+        SumExecution.report(numbers.size(), sum, this.getClass().getName());
         return sum;
     }
 }
