@@ -18,14 +18,13 @@ public class AdditionWithForkJoinPool {
     }
 
     private long execute() {
-        return getTasks(numbers)
-                .stream()
+        return ForkJoinTask.invokeAll(getTasks()).stream()
                 .map(ForkJoinTask::invoke)
                 .mapToLong(Long::valueOf)
                 .sum();
     }
 
-    private List<CustomRecursiveTask> getTasks(List<Long> numbers) {
+    private List<CustomRecursiveTask> getTasks() {
         List<CustomRecursiveTask> tasks = new ArrayList<>();
         for (int index = 0; index < numbers.size() - 1; index += threshold) {
             tasks.add(new CustomRecursiveTask(numbers.subList(index, index + threshold)));

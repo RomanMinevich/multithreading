@@ -10,8 +10,8 @@ public class SumExecution {
                 .sum();
     }
 
-    public static void report(int listSize, long sum, String className) {
+    public static void report(int listSize, long sum, String executorName) {
         System.out.printf("Total sum of %d random numbers = %d. Executed by %s\n",
-                listSize, sum, className);
+                listSize, sum, executorName);
     }
 }

@@ -13,7 +13,7 @@ public class CustomRecursiveTask extends RecursiveTask<Long> {
     @Override
     protected Long compute() {
         long sum = SumExecution.execute(numbers);
-        SumExecution.report(numbers.size(), sum, this.getClass().getName());
+        SumExecution.report(numbers.size(), sum, Thread.currentThread().getName());
         return sum;
     }
 }
