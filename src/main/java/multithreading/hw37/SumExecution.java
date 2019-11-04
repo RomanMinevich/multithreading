@@ -4,7 +4,7 @@ import java.util.List;
 
 public class SumExecution {
 
-    public static long execute(List<Long> numbers) {
+    public static long executeSum(List<Long> numbers) {
         return numbers.stream()
                 .mapToLong(Long::longValue)
                 .sum();

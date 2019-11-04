@@ -4,8 +4,9 @@ import static java.util.stream.Collectors.toList;
 
 import java.util.List;
 import java.util.Random;
+import java.util.function.Supplier;
 
-public class RandomNumbers {
+public class RandomNumbers implements Supplier<List<Long>> {
     private List<Long> numbers;
 
     public RandomNumbers(int size) {
@@ -14,7 +15,8 @@ public class RandomNumbers {
                 .collect(toList());
     }
 
-    public List<Long> getNumbers() {
+    @Override
+    public List<Long> get() {
         return numbers;
     }
 }

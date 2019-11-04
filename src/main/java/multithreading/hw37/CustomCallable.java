@@ -12,7 +12,7 @@ public class CustomCallable implements Callable<Long> {
 
     @Override
     public Long call() {
-        long sum = SumExecution.execute(numbers);
+        long sum = SumExecution.executeSum(numbers);
         SumExecution.report(numbers.size(), sum, Thread.currentThread().getName());
         return sum;
     }

@@ -7,11 +7,11 @@ public class Main {
 
     public static void main(String[] args) {
         new AdditionWithExecutorService(
-                new RandomNumbers(LIST_SIZE).getNumbers(), EXECUTOR_SERVICE_POOL_SIZE)
+                new RandomNumbers(LIST_SIZE).get(), EXECUTOR_SERVICE_POOL_SIZE)
                 .report();
         System.out.println();
         new AdditionWithForkJoinPool(
-                new RandomNumbers(LIST_SIZE).getNumbers(), FORK_JOIN_TASK_LIST_SIZE)
+                new RandomNumbers(LIST_SIZE).get(), FORK_JOIN_TASK_LIST_SIZE)
                 .report();
     }
 }
